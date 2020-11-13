@@ -49,7 +49,7 @@
                     if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
                         img_name=JSON.parse(xhr.responseText)['file_name'][RandomNumBoth(0,JSON.parse(xhr.responseText)['file_num'])];
                         document.getElementById("imgName").innerHTML=img_name;
-                        img_url="https://cdn.llilii.cn/image/kagamine/"+img_name;
+                        img_url="https://static.llilii.cn/image/kagamine/"+img_name;
                         document.getElementById("imgUrl").innerHTML=img_url;
                         document.getElementById("Source_Img").href=img_url;
                         mdui.snackbar({
@@ -60,7 +60,7 @@
                     break;
             }
         }
-        xhr.open('get','https://cdn.llilii.cn/image/kagamine/img_list.json');
+        xhr.open('get','https://static.llilii.cn/image/kagamine/img_list.json');
         xhr.send(null);
     }
     
