@@ -98,18 +98,18 @@
         };
     
         if(img.complete){
-            Display_image(url,img);
+            display_image(url,img);
             //console.log(img.width+" "+img.height);
         }else{
             img.onload = function(){
-                Display_image(url,img);
+                display_image(url,img);
                 //console.log(img.width+" "+img.height);
                 img.onload=null;
             }
         }
     }
 
-    function Display_image(url,img){
+    function display_image(url,img){
         document.getElementById("imgBox").style="max-width: "+img.width+'px;';
         document.getElementById("imgSrc").src=url;
         document.getElementById("Remind").innerHTML='';
