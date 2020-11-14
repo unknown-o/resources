@@ -41,13 +41,7 @@
         document.getElementById("imgBox").style="max-width: 400px;";
         document.getElementById("imgSrc").src='';
         document.getElementById("Remind").innerHTML='<div class="mdui-card-content"><center><img src="https://static.llilii.cn/images/other/loading.png"/></center><br><div class="mdui-progress"><div id=\'Loading_Status\' class="mdui-progress-determinate" style="width: 0%;"></div></div></div>';
-        /*
-        mdui.snackbar({
-          message: '正在获取图片链接...'
-        });
-        */
         var xhr = new XMLHttpRequest ( ) ;
-    
         xhr.onreadystatechange = function(){
             switch(xhr.readyState){
                 case 4 : 
@@ -57,11 +51,6 @@
                         img_url="https://static.llilii.cn/images/kagamine/"+img_name;
                         document.getElementById("imgUrl").innerHTML=img_url;
                         document.getElementById("Source_Img").href=img_url;
-                        /*
-                        mdui.snackbar({
-                          message: '获取图片链接['+img_url+']成功！'
-                        });
-                        */
                         load_img(img_url);
                     }
                     break;
@@ -74,7 +63,7 @@
     function RandomNumBoth(Min,Max){
         var Range = Max - Min;
         var Rand = Math.random();
-        var num = Min + Math.round(Rand * Range); //四舍五入
+        var num = Min + Math.round(Rand * Range);
         return num;
     }
 
@@ -101,11 +90,6 @@
     }
 
     function checkPicurl(url){
-        /*
-        mdui.snackbar({
-            message: '正在加载图片中...'
-        });
-        */
         var img = new Image();
         img.src = url;
         img.onerror = function(){
@@ -121,7 +105,7 @@
                 document.getElementById("imgSrc").src=url;
                 document.getElementById("Remind").innerHTML='';
                 //console.log(img.width+" "+img.height);
-                img.onload=null;//避免重复加载
+                img.onload=null;
                 mdui.snackbar({
                     message: '加载成功！',
                     timeout:1000
