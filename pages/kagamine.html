@@ -76,7 +76,11 @@
         xhr.open('GET', url);
         xhr.onprogress = function (event) {
             if (event.lengthComputable) {
-                console.log((event.loaded / event.total) * 100); // 进度
+                mdui.snackbar({
+                    message: '加载图片中...'+parseInt((event.loaded / event.total) * 100).toString()+'%',
+                    timeout:10
+                });
+                //console.log((event.loaded / event.total) * 100); // 进度
             }
         };
         xhr.onreadystatechange = function(){
@@ -92,7 +96,7 @@
 
     function checkPicurl(url){
         mdui.snackbar({
-            message: '正在加载图片中...',
+            message: '正在加载图片中...'
         });
         var img = new Image();
         img.src = url;
@@ -108,7 +112,7 @@
                 document.getElementById("imgBox").style="max-width: "+img.width+'px;';
                 document.getElementById("imgSrc").src=url;
                 document.getElementById("Remind").innerHTML='';
-                console.log(img.width+" "+img.height);
+                //console.log(img.width+" "+img.height);
                 img.onload=null;//避免重复加载
             }
         }
