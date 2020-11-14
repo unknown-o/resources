@@ -38,9 +38,11 @@
 <script>
     image_get();
     function image_get(){
+        /*
         mdui.snackbar({
           message: '正在获取图片链接...'
         });
+        */
         var xhr = new XMLHttpRequest ( ) ;
     
         xhr.onreadystatechange = function(){
@@ -52,9 +54,11 @@
                         img_url="https://static.llilii.cn/images/kagamine/"+img_name;
                         document.getElementById("imgUrl").innerHTML=img_url;
                         document.getElementById("Source_Img").href=img_url;
+                        /*
                         mdui.snackbar({
                           message: '获取图片链接['+img_url+']成功！'
                         });
+                        */
                         load_img(img_url);
                     }
                     break;
@@ -88,6 +92,8 @@
                 case 4 : 
                     if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
                         checkPicurl(url);
+                    } else {
+                        mdui.alert(name+"抱歉，图片加载失败！");
                     }
             }
         };
@@ -95,13 +101,15 @@
     }
 
     function checkPicurl(url){
+        /*
         mdui.snackbar({
             message: '正在加载图片中...'
         });
+        */
         var img = new Image();
         img.src = url;
         img.onerror = function(){
-            mdui.alert(name+" 图片加载失败，请检查url是否正确");
+            mdui.alert(name+"抱歉，图片加载失败！");
             return false;
         };
     
