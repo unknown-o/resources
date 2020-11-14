@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div id='Remind'><div class="mdui-card-content"><center><img src="https://static.llilii.cn/images/other/loading.png"/></center></div></div>
+            <div id='Remind'><div class="mdui-card-content"><center><img src="https://static.llilii.cn/images/other/loading.png"/></center><br><div class="mdui-progress"><div id='Loading_Status' class="mdui-progress-determinate" style="width: 0%;"></div></div></div></div>
             <div class="mdui-card-actions">
                 <a id='Source_Img' target="_blank" class="mdui-btn mdui-color-theme-accent mdui-ripple" href="">查看原图</a>
                 <button onclick='image_get()' class="mdui-btn mdui-color-theme-accent mdui-ripple">刷新图片</button>
@@ -81,9 +81,10 @@
         xhr.onprogress = function (event) {
             if (event.lengthComputable) {
                 mdui.snackbar({
-                    message: '加载图片中...'+parseInt((event.loaded / event.total) * 100).toString()+'%',
+                    message: '加载图片中...'++'%',
                     timeout:10
                 });
+                document.getElementById("Loading_Status").style='width: '+parseInt((event.loaded / event.total) * 100).toString()+'%;';
                 //console.log((event.loaded / event.total) * 100); // 进度
             }
         };
