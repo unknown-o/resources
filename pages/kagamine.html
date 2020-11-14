@@ -80,10 +80,6 @@
         xhr.open('GET', url);
         xhr.onprogress = function (event) {
             if (event.lengthComputable) {
-                mdui.snackbar({
-                    message: '加载图片中...'++'%',
-                    timeout:10
-                });
                 document.getElementById("Loading_Status").style='width: '+parseInt((event.loaded / event.total) * 100).toString()+'%;';
                 //console.log((event.loaded / event.total) * 100); // 进度
             }
