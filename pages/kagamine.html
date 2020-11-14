@@ -98,11 +98,11 @@
         };
     
         if(img.complete){
-            Display_image(url,img)
+            Display_image(url,img);
             //console.log(img.width+" "+img.height);
         }else{
             img.onload = function(){
-                Display_image(url,img)
+                Display_image(url,img);
                 //console.log(img.width+" "+img.height);
                 img.onload=null;
             }
