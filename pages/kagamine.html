@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div id='Remind'><div class="mdui-card-content"><center>正在加载图片中...<br>您可以点击‘查看原图’在您的浏览器中直接查看图片！</center></div></div>
+            <div id='Remind'><div class="mdui-card-content"><center><img src="https://static.llilii.cn/images/other/loading.png"/></center></div></div>
             <div class="mdui-card-actions">
                 <a id='Source_Img' target="_blank" class="mdui-btn mdui-color-theme-accent mdui-ripple" href="">查看原图</a>
                 <button onclick='image_get()' class="mdui-btn mdui-color-theme-accent mdui-ripple">刷新图片</button>
@@ -55,7 +55,7 @@
                         mdui.snackbar({
                           message: '获取图片链接['+img_url+']成功！'
                         });
-                        checkPicurl(img_url);
+                        load_img(img_url);
                     }
                     break;
             }
@@ -70,7 +70,26 @@
         var num = Min + Math.round(Rand * Range); //四舍五入
         return num;
     }
-    
+
+    function load_img(url){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.onprogress = function (event) {
+            if (event.lengthComputable) {
+                console.log((event.loaded / event.total) * 100); // 进度
+            }
+        };
+        xhr.onreadystatechange = function(){
+            switch(xhr.readyState){
+                case 4 : 
+                    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                        checkPicurl(url);
+                    }
+            }
+        };
+        xhr.send();
+    }
+
     function checkPicurl(url){
         mdui.snackbar({
             message: '正在加载图片中...',
