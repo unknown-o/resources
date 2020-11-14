@@ -122,6 +122,10 @@
                 document.getElementById("Remind").innerHTML='';
                 //console.log(img.width+" "+img.height);
                 img.onload=null;//避免重复加载
+                mdui.snackbar({
+                    message: '加载成功！',
+                    timeout:1000
+                });
             }
         }
     }
