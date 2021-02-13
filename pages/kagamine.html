@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="mdui-card-actions">
-                    <a id='Source_Img' target="_blank" class="mdui-btn mdui-color-theme-accent mdui-ripple" href="">查看原图</a>
+                    <a id='sourceImg' target="_blank" class="mdui-btn mdui-color-theme-accent mdui-ripple" href="">查看原图</a>
                     <button onclick='image_get()' class="mdui-btn mdui-color-theme-accent mdui-ripple">刷新图片</button>
                 </div>
             </div>
@@ -64,10 +64,10 @@
                 case 4:
                     if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
                         img_name = JSON.parse(xhr.responseText)['file_name'][RandomNumBoth(0, JSON.parse(xhr.responseText)['file_num'])];
-                        document.getElementById("imgName").innerHTML = img_name;
+                        document.getElementById("imgName").innerHTML = img_name.split("/")[1];
                         img_url = "https://img.llilii.cn/kagamine/" + img_name;
                         document.getElementById("imgUrl").innerHTML = img_url;
-                        document.getElementById("Source_Img").href = img_url;
+                        document.getElementById("sourceImg").href = img_url;
                         load_img(img_url);
                     }
                     break;
